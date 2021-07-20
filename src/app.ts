@@ -1,10 +1,6 @@
 // autobund decorator
 
-function autobind(
-  _: any,
-  _2: string,
-  descriptor: PropertyDescriptor
-) {
+function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   const adjDescriptor: PropertyDescriptor = {
     configurable: true,
@@ -52,10 +48,38 @@ class ProjectInput {
     this.attach();
   }
 
+  private gatherUserInput(): [string, string, number] | void {
+    const eneredTitle = this.titleInputElement.value;
+    const eneredDescription = this.descriptionInputElement.value;
+    const eneredPeolple = this.peopleInputElement.value;
+
+    if (
+      eneredTitle.trim().length === 0 ||
+      eneredDescription.trim().length === 0 ||
+      eneredPeolple.trim().length === 0
+    ) {
+      alert("Inavalid input, plase try again!");
+      return;
+    } else {
+      return [eneredTitle, eneredDescription, +eneredPeolple];
+    }
+  }
+
+  private clearInput() {
+    this.titleInputElement.value = "";
+    this.descriptionInputElement.value = "";
+    this.peopleInputElement.value = "";
+  }
+
   @autobind
   private submitHandler(event: Event) {
     event.preventDefault();
-    console.log(this.titleInputElement.value);
+    const userInput = this.gatherUserInput();
+    if (Array.isArray(userInput)) {
+      const [title, desc, people] = userInput;
+      console.log(title, desc, people);
+      this.clearInput();
+    }
   }
 
   private configure() {
