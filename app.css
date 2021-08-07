@@ -10,6 +10,20 @@ body {
   margin: 0;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-control {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
 label,
 input,
 textarea {
@@ -92,6 +106,7 @@ button:active {
   padding: 1rem;
   margin: 1rem;
   background: white;
+  text-align: center;
 }
 
 .projects li:hover {
