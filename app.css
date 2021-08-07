@@ -106,7 +106,6 @@ button:active {
   padding: 1rem;
   margin: 1rem;
   background: white;
-  text-align: center;
 }
 
 .projects li:hover {
@@ -116,6 +115,7 @@ button:active {
 .projects li h2 {
   color: #ff0062;
   margin: 0.5rem 0;
+  text-align: center;
 }
 
 #finished-projects li h2 {
